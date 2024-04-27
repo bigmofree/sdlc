@@ -1,4 +1,4 @@
-name: Deploy rds
+name: deploy rds
 
 
 on:
