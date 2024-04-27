@@ -3,8 +3,7 @@ name: deploy asg
 
 on:
   workflow_run:
-    workflows:
-      - "deploy asg"
+    workflows: ["build ami"]
     type:
       - completed
 
@@ -22,22 +21,22 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Initialize terraform
-        working-directory: asg
+        working-directory: vpc
         run: |
           terraform init
 
       - name: Configure workspace
-        working-directory: asg
+        working-directory: vpc
         run: |
           terraform workspace new dev || terraform worlspace select dev
 
       - name: Plan
-        working-directory: asg
+        working-directory: vpc
         run: |
           terraform plan
 
       - name: Apply
-        working-directory: asg
+        working-directory: vpc
         run: |
           echo "applying"
           #terraform apply -auto-approve

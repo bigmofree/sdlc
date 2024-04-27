@@ -4,36 +4,36 @@ on:
   push:
     branches:
       - "main"
-      - "master"
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: us-east-1
       AWS_DEFAULT_OUTPUT: json
+    
     steps:
-
       - uses: actions/checkout@v4
 
-      - name: Initialize terraform
+      - name: initialize terraform
         working-directory: vpc
         run: |
           terraform init
 
-      - name: Configure workspace
+      - name: confirgure workspave
         working-directory: vpc
         run: |
-          terraform workspace new dev || terraform worlspace select dev
-
-      - name: Plan
+          terraform workspace new dev || terraform workspace select dev
+  
+      - name: plan
         working-directory: vpc
         run: |
           terraform plan
-
+  
       - name: Apply
         working-directory: vpc
         run: |
-           terraform destroy -auto-approve
+          terraform destroy -auto-approve
