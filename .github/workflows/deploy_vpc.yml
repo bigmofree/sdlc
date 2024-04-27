@@ -3,8 +3,8 @@ name: deploy vpc
 on:
   push:
     branches:
-      -"main"
-      -"master"
+      - "main"
+      - "master"
 
 jobs:
   build:
