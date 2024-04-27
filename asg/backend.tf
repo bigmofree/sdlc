@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = ""
+    bucket = "sdlc-terraform-backend-bigmofree"
     key    = "path/to/my/asg"
     region = "us-east-1"
   }
