@@ -2,10 +2,11 @@ name: deploy asg
 
 
 on:
-  push:
-    paths:
-      -"asg/**"
-
+  workflow_run:
+    workflows:
+      - "deploy asg"
+    type:
+      - completed
 
 
 jobs:
